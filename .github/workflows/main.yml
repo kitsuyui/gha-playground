@@ -16,6 +16,7 @@ jobs:
           # do something
 
   deploy:
+    if: ${{ github.ref == 'release' || github.ref == 'main' }}
     needs: build
     strategy:
       matrix:
@@ -26,9 +27,26 @@ jobs:
             target_file: b.json
           - target: target_c
             target_file: c.json
-
     uses: ./.github/workflows/deploy.yml
     with:
-      deploy_target: target_a
-      target_file: a.json
-      dry_run: ${{ !contains(github.ref, 'release') }}
+      deploy_target: ${{ matrix.target }}
+      target_file: ${{ matrix.target_file }}
+      dry_run: false
+
+  deploy_dry_run:
+    if: ${{ github.ref != 'release' && github.ref != 'main' }}
+    needs: build
+    strategy:
+      matrix:
+        include:
+          - target: target_a
+            target_file: a.json
+          - target: target_b
+            target_file: b.json
+          - target: target_c
+            target_file: c.json
+    uses: ./.github/workflows/deploy.yml
+    with:
+      deploy_target: ${{ matrix.target }}
+      target_file: ${{ matrix.target_file }}
+      dry_run: true

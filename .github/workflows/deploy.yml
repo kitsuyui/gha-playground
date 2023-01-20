@@ -10,7 +10,7 @@ on:
         required: true
         type: string
       dry_run:
-        required: false
+        required: true
         type: boolean
         default: true
 
