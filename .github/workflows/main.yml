@@ -1,0 +1,31 @@
+name: ci
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: [target_a, target_b, target_c]
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: run
+        run: echo "Hello, world!"
+
+      - if: "!contains(github.ref, 'release')"
+        name: dry run deploy
+        uses: ./.github/actions/deploy
+        with:
+          deploy_target: ${{ matrix.target }}
+          dry_run: true
+
+      - if: "contains(github.ref, 'release')"
+        name: deploy
+        uses: ./.github/actions/deploy
+        with:
+          deploy_target: ${{ matrix.target }}
+          dry_run: false

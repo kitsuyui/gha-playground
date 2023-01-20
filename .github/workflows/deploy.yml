@@ -1,0 +1,28 @@
+name: deploy
+
+on:
+  workflow_call:
+    inputs:
+      deploy_target:
+        require: true
+        type: choice
+        options:
+        - target_a
+        - target_b
+        - target_c
+      dry_run:
+        require: false
+        type: boolean
+        default: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+        if [ "${{ inputs.dry_run }}" = "true" ]; then
+          echo "Deploying to ${{ inputs.deploy_target }} --dry_run=${{ inputs.dry_run }}"
+        else:
+          echo "Deploying to ${{ inputs.deploy_target }}"
+        fi
