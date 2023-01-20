@@ -18,14 +18,14 @@ jobs:
 
       - if: "!contains(github.ref, 'release')"
         name: dry run deploy
-        uses: ./.github/actions/deploy
+        uses: ./.github/workflows/deploy@main
         with:
           deploy_target: ${{ matrix.target }}
           dry_run: true
 
       - if: "contains(github.ref, 'release')"
         name: deploy
-        uses: ./.github/actions/deploy
+        uses: ./.github/workflows/deploy@main
         with:
           deploy_target: ${{ matrix.target }}
           dry_run: false
