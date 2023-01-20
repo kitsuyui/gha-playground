@@ -6,6 +6,9 @@ on:
       deploy_target:
         required: true
         type: string
+      target_file:
+        required: true
+        type: string
       dry_run:
         required: false
         type: boolean
@@ -18,7 +21,7 @@ jobs:
       - uses: actions/checkout@v3
       - run: |
           if [ "${{ inputs.dry_run }}" = "true" ]; then
-            echo "Deploying to ${{ inputs.deploy_target }} --dry_run=${{ inputs.dry_run }}"
+            echo "Deploying to ${{ inputs.deploy_target }} --file=${{ inputs.target_file }} --dry_run=${{ inputs.dry_run }}"
           else
-            echo "Deploying to ${{ inputs.deploy_target }}"
+            echo "Deploying to ${{ inputs.deploy_target }} --file=${{ inputs.target_file }}"
           fi
