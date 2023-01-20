@@ -19,8 +19,16 @@ jobs:
     needs: build
     strategy:
       matrix:
-        target: [target_a, target_b, target_c]
+        include:
+          - target: target_a
+            target_file: a.json
+          - target: target_b
+            target_file: b.json
+          - target: target_c
+            target_file: c.json
+
     uses: ./.github/workflows/deploy.yml
     with:
       deploy_target: target_a
+      target_file: a.json
       dry_run: ${{ !contains(github.ref, 'release') }}
