@@ -1,6 +1,6 @@
 {
   "private": true,
   "dependencies": {
-    "lodash": "^4.16.0"
+    "next": "^12.3.3"
   }
 }
