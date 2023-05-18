@@ -1,6 +1,6 @@
 {
   "private": true,
   "dependencies": {
-    "react": "^18.1.0"
+    "react": "^17.0.0"
   }
 }
