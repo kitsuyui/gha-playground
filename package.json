@@ -1,6 +1,6 @@
 {
   "private": true,
   "dependencies": {
-    "vue": "3.3.3"
+    "@types/node": "18.16.9"
   }
 }
