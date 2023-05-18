@@ -4,5 +4,8 @@
     "github>kitsuyui/renovate-config"
   ],
   "automerge": true,
-  "platformAutomerge": true
+  "platformAutomerge": true,
+  "reviewers": [
+    "kitsuyui"
+  ]
 }
