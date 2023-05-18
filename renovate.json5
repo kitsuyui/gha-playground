@@ -3,5 +3,6 @@
   "extends": [
     "github>kitsuyui/renovate-config"
   ],
-  "automerge": true
+  "automerge": true,
+  "platformAutomerge": true
 }
