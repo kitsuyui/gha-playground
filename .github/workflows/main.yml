@@ -1,7 +1,18 @@
 name: ci
 
 on:
-  pull_request:
+  - pull_request
+
+# https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request
+# is same as
+# on:
+#   pull_request:
+#     types: [opened, synchronize, reopened]
+#
+# not same as following (this means types: [])
+#
+# on:
+#   pull_request:
 
 jobs:
   build:
