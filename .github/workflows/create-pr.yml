@@ -1,0 +1,38 @@
+name: Example workflow of creating PR
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  MERGE_BRANCH: main
+  BRANCH_NAME: example-pr-creation
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.MERGE_BRANCH }}
+
+      - run: |
+          date '+%Y%m%d' > something.txt
+
+      - uses: peter-evans/create-pull-request@v4
+        with:
+          branch: ${{ env.BRANCH_NAME }}
+          commit-message: Create
+          delete-branch: true
+          title: Update!!!
+          body: |
+            Try to update something
+            Update something
+
+        env:
+          GH_TOKEN: ${{ github.token }}
