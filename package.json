@@ -1,6 +1,6 @@
 {
   "private": true,
   "dependencies": {
-    "@types/node": "20.11.14"
+    "@types/node": "20.11.15"
   }
 }
