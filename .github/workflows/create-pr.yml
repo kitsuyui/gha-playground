@@ -24,7 +24,7 @@ jobs:
       - run: |
           date '+%Y%m%d' > something.txt
 
-      - uses: peter-evans/create-pull-request@v6
+      - uses: peter-evans/create-pull-request@v7
         with:
           branch: ${{ env.BRANCH_NAME }}
           commit-message: Create
