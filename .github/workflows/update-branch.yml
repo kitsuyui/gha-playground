@@ -1,0 +1,36 @@
+name: Try to update branch
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  MERGE_BRANCH: try-update-branch
+  BRANCH_NAME: try-update-branch
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.MERGE_BRANCH }}
+
+      - run: |
+          date '+%Y%m%d' > something.txt
+
+      - run: |
+          git add -N .
+          if ! git diff --exit-code --quiet
+          then
+            git config user.name github-actions[bot]
+            git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+            git add .
+            git commit -m "Update"
+            git push
+          fi
