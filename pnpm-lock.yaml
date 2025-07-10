@@ -6,13 +6,13 @@ settings:
 
 dependencies:
   '@types/node':
-    specifier: 22.16.2
-    version: 22.16.2
+    specifier: 22.16.3
+    version: 22.16.3
 
 packages:
 
-  /@types/node@22.16.2:
-    resolution: {integrity: sha512-Cdqa/eJTvt4fC4wmq1Mcc0CPUjp/Qy2FGqLza3z3pKymsI969TcZ54diNJv8UYUgeWxyb8FSbCkhdR6WqmUFhA==}
+  /@types/node@22.16.3:
+    resolution: {integrity: sha512-sr4Xz74KOUeYadexo1r8imhRtlVXcs+j3XK3TcoiYk7B1t3YRVJgtaD3cwX73NYb71pmVuMLNRhJ9XKdoDB74g==}
     dependencies:
       undici-types: 6.21.0
     dev: false
