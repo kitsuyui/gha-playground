@@ -18,7 +18,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: |
           if [ "${{ inputs.dry_run }}" = "true" ]; then
             echo "Deploying to ${{ inputs.deploy_target }} --file=${{ inputs.target_file }} --dry_run=${{ inputs.dry_run }}"
