@@ -1,6 +1,6 @@
 {
   "private": true,
   "dependencies": {
-    "@types/node": "24.10.8"
+    "@types/node": "24.10.9"
   }
 }
